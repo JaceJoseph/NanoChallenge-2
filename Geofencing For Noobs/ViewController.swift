@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var reflectionTableView: UITableView!
     
     var listOfRecording = [String]()
+    var recordingDates = [String]()
     var recordNumber:Int = 0
     
     let locationManager = CLLocationManager()
@@ -63,6 +64,7 @@ class ViewController: UIViewController {
         //USER DEFAULTS
         let defaults = UserDefaults.standard
         listOfRecording = defaults.object(forKey:"nameArray") as? [String] ?? [String]()
+        recordingDates  = defaults.object(forKey: "dateArray") as? [String] ?? [String]()
         
         //LOCAL AUTH
 //        context = LAContext()
@@ -102,6 +104,11 @@ class ViewController: UIViewController {
         listOfRecording.append(name)
         print("Appended !!!!!!")
     }
+    
+    func addRecordDates(date: String) {
+        recordingDates.append(date)
+        print("Appended !!!!!!")
+    }
 }
 
 extension ViewController:UITableViewDelegate,UITableViewDataSource{
@@ -111,8 +118,9 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = listOfRecording[indexPath.row]
+        let date = recordingDates[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "reflectionCell") as? ReflectionTableViewCell
-        cell?.setUI(title: row)
+        cell?.setUI(title: row,date: date)
         
         return cell ?? UITableViewCell()
     }
@@ -122,6 +130,10 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         performSegue(withIdentifier: "viewReflectionSegue", sender: self)
         
         print("You select row \(recordNumber), Tryin to open recording\(recordNumber).m4a")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {

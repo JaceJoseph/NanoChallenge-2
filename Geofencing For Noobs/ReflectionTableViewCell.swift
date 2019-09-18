@@ -11,14 +11,16 @@ import UIKit
 class ReflectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func setUI(title:String){
+    func setUI(title:String,date:String){
         self.titleLabel.text = title
+        self.dateLabel.text = date
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -12,7 +12,8 @@ import AVFoundation
 class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var playbackButton: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var micImage: UIImageView!
     
     var recordingSession:AVAudioSession!
     var audioRecorder:AVAudioRecorder!
@@ -20,9 +21,11 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     var numberOfRecords = 0
     var playbackIsPlaying:Bool = false
     
+   lazy var pulse=Pulsing(numberOfPulses: Float.infinity, radius: 200, position:micImage.center)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideKeyboard()
         if let number:Int = UserDefaults.standard.object(forKey: "myNumber") as? Int{
             numberOfRecords = number
             print(numberOfRecords)
@@ -50,6 +53,7 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         if audioRecorder == nil{
+            addPulse()
             numberOfRecords += 1
             print(numberOfRecords)
             let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
@@ -65,6 +69,7 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
                 displayAlert(title: "Oops", message: "Recording went wrong :(")
             }
         }else{
+            pulse.removeFromSuperlayer()
             audioRecorder.stop()
             audioRecorder = nil
              recordButton.setTitle("Start Recording", for: .normal)
@@ -72,6 +77,10 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
             UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
             saveRecording()
             print("record saved")
+            
+            displayCompletionAlert()
+            
+            
             
 //            performSegue(withIdentifier: "toHome", sender: self)
         }
@@ -89,12 +98,25 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    func displayCompletionAlert(){
+        let alert = UIAlertController(title: "Recording Successful", message: "Your Reflection Has Been Saved, Yay!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go to Home", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+             self.performSegue(withIdentifier: "toHome", sender: self)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let segueToAllRecord = segue.destination as? ViewController
         
         // Function to append to AllRecordViewController
-        segueToAllRecord?.addRecord(name: "Recording\(numberOfRecords)")
+        
+        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
+        
+        segueToAllRecord?.addRecord(name: recordingName)
+        segueToAllRecord?.addRecordDates(date: getDate())
         segueToAllRecord?.reflectionTableView.reloadData()
         
         print("=====================================")
@@ -104,29 +126,67 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     func saveRecording() {
         let defaults = UserDefaults.standard
         var nameRecordingArray = defaults.object(forKey:"nameArray") as? [String] ?? [String]()
-        nameRecordingArray.append("Recording\(numberOfRecords)")
+        var dateRecordingArray = defaults.object(forKey:"dateArray") as? [String] ?? [String]()
+        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
+        
+        print(recordingName)
+        
+        let formattedDate = getDate()
+        dateRecordingArray.append(formattedDate)
+        nameRecordingArray.append(recordingName)
         defaults.set(nameRecordingArray, forKey: "nameArray")
+        defaults.set(dateRecordingArray, forKey: "dateArray")
     }
     
-    @IBAction func playbackRecording(_ sender: Any) {
-        if playbackIsPlaying == false{
-            let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
-            do{
-                try audioPlayer = AVAudioPlayer(contentsOf: fileName, fileTypeHint: "m4a")
-                audioPlayer.play()
-                playbackButton.setTitle("StopPlayback", for: .normal)
-                playbackIsPlaying = true
-            }catch{
-                
-            }
-        }else{
-            audioPlayer.stop()
-            playbackButton.setTitle("StartPlayback", for: .normal)
-            playbackIsPlaying = false
-        }
+    func getDate()->String{
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd "
+        let formattedDate = format.string(from: date)
+        return formattedDate
     }
-    @IBAction func backToHome(_ sender: Any) {
-        performSegue(withIdentifier: "toHome", sender: self)
+    
+    func addPulse(){
+        pulse=Pulsing(numberOfPulses: Float.infinity, radius: 200, position:micImage.center)
+        pulse.animationDuration = 0.8
+        pulse.backgroundColor = UIColor.green.cgColor
+        self.view.layer.insertSublayer(pulse, below: micImage.layer)
     }
 }
+
+extension UIViewController{
+    //tap anywhere to dismiss keyboard
+    func hideKeyboard(){
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+}
+    
+//    @IBAction func playbackRecording(_ sender: Any) {
+//        if playbackIsPlaying == false{
+//            let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+//            do{
+//                try audioPlayer = AVAudioPlayer(contentsOf: fileName, fileTypeHint: "m4a")
+//                audioPlayer.play()
+//                playbackButton.setTitle("StopPlayback", for: .normal)
+//                playbackIsPlaying = true
+//            }catch{
+//
+//            }
+//        }else{
+//            audioPlayer.stop()
+//            playbackButton.setTitle("StartPlayback", for: .normal)
+//            playbackIsPlaying = false
+//        }
+//    }
+//    @IBAction func backToHome(_ sender: Any) {
+//        performSegue(withIdentifier: "toHome", sender: self)
+//    }
+//}
 
