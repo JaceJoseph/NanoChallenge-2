@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var locationManager: CLLocationManager!
     var notificationCenter: UNUserNotificationCenter!
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        print(userActivity.activityType)
+        
+        if userActivity.activityType == "jesse.AcademyJournal.Add a Journal"{
+            let startVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "reflectionList")
+            //            let navVC = UINavigationController(rootViewController: startVC)
+            let share = UIApplication.shared.delegate as? AppDelegate
+            share?.window?.rootViewController = startVC
+            share?.window?.makeKeyAndVisible()
+        }
+        return false
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -41,15 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             print("I woke up thanks to geofencing")
         }
-
         checkLogIn()
-        
         return true
     }
     
     func checkLogIn(){
         if UserDefaults.standard.value(forKey: "loggedIn") != nil{
-            let startVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firstNav")
+            let startVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "faceID")
 //            let navVC = UINavigationController(rootViewController: startVC)
             let share = UIApplication.shared.delegate as? AppDelegate
             share?.window?.rootViewController = startVC

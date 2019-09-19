@@ -2,14 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow microphone to record your reflection</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Use Face ID to log in</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>NanoChallenge2</string>
+	<string>Academy Journal</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,10 +22,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use Face ID to log in</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow location access for geofencing goodness</string>
+	<string>Allow location access so we can remind you!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow location access for geofencing goodness</string>
+	<string>Allow location access so we can remind you!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow microphone so you can record your reflection!</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

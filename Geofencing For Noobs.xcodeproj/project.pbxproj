@@ -14,6 +14,7 @@
 		700C0FC8233101D800E07B34 /* OpenReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FC7233101D800E07B34 /* OpenReflectionViewController.swift */; };
 		700C0FCC2332075B00E07B34 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCB2332075B00E07B34 /* OnboardingViewController.swift */; };
 		700C0FCE2332518100E07B34 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCD2332518100E07B34 /* Pulsing.swift */; };
+		700C0FD02333105000E07B34 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCF2333105000E07B34 /* RoundedButton.swift */; };
 		71BF6D2E2090A18500C70A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF6D2D2090A18500C70A39 /* AppDelegate.swift */; };
 		71BF6D302090A18500C70A39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF6D2F2090A18500C70A39 /* ViewController.swift */; };
 		71BF6D352090A18700C70A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71BF6D342090A18700C70A39 /* Assets.xcassets */; };
@@ -30,6 +31,8 @@
 		700C0FC7233101D800E07B34 /* OpenReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenReflectionViewController.swift; sourceTree = "<group>"; };
 		700C0FCB2332075B00E07B34 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		700C0FCD2332518100E07B34 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
+		700C0FCF2333105000E07B34 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		700C0FD1233330B900E07B34 /* Geofencing For Noobs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Geofencing For Noobs.entitlements"; sourceTree = "<group>"; };
 		71BF6D2A2090A18500C70A39 /* Geofencing For Noobs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Geofencing For Noobs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BF6D2D2090A18500C70A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71BF6D2F2090A18500C70A39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,8 +72,8 @@
 		71BF6D2C2090A18500C70A39 /* Geofencing For Noobs */ = {
 			isa = PBXGroup;
 			children = (
+				700C0FD1233330B900E07B34 /* Geofencing For Noobs.entitlements */,
 				71BF6D2D2090A18500C70A39 /* AppDelegate.swift */,
-				71BF6D2F2090A18500C70A39 /* ViewController.swift */,
 				700C0FC12330BA4F00E07B34 /* Main.storyboard */,
 				71BF6D342090A18700C70A39 /* Assets.xcassets */,
 				71BF6D362090A18700C70A39 /* LaunchScreen.storyboard */,
@@ -79,9 +82,11 @@
 				700C0FBF2330B92200E07B34 /* FaceRecognitionViewController.swift */,
 				700C0FC52330F6DE00E07B34 /* ReflectionTableViewCell.swift */,
 				700C0FC32330EB5F00E07B34 /* RecordReflectionViewController.swift */,
+				71BF6D2F2090A18500C70A39 /* ViewController.swift */,
 				700C0FC7233101D800E07B34 /* OpenReflectionViewController.swift */,
 				700C0FCB2332075B00E07B34 /* OnboardingViewController.swift */,
 				700C0FCD2332518100E07B34 /* Pulsing.swift */,
+				700C0FCF2333105000E07B34 /* RoundedButton.swift */,
 			);
 			path = "Geofencing For Noobs";
 			sourceTree = "<group>";
@@ -120,6 +125,9 @@
 						CreatedOnToolsVersion = 9.3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
 								enabled = 1;
 							};
 						};
@@ -166,6 +174,7 @@
 				700C0FC8233101D800E07B34 /* OpenReflectionViewController.swift in Sources */,
 				700C0FCE2332518100E07B34 /* Pulsing.swift in Sources */,
 				700C0FC42330EB5F00E07B34 /* RecordReflectionViewController.swift in Sources */,
+				700C0FD02333105000E07B34 /* RoundedButton.swift in Sources */,
 				71BF6D302090A18500C70A39 /* ViewController.swift in Sources */,
 				700C0FCC2332075B00E07B34 /* OnboardingViewController.swift in Sources */,
 				71BF6D2E2090A18500C70A39 /* AppDelegate.swift in Sources */,
@@ -241,6 +250,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Academy Journal";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -294,6 +304,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "Academy Journal";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -305,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Geofencing For Noobs/Geofencing For Noobs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PM9Q92D2LG;
 				INFOPLIST_FILE = "Geofencing For Noobs/Info.plist";
@@ -312,7 +324,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hpbl.Geofencing-For-Noobs";
+				PRODUCT_BUNDLE_IDENTIFIER = jesse.AcademyJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -323,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Geofencing For Noobs/Geofencing For Noobs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PM9Q92D2LG;
 				INFOPLIST_FILE = "Geofencing For Noobs/Info.plist";
@@ -330,7 +343,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hpbl.Geofencing-For-Noobs";
+				PRODUCT_BUNDLE_IDENTIFIER = jesse.AcademyJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

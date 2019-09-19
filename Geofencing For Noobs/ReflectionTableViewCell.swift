@@ -12,6 +12,7 @@ class ReflectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var playImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,7 @@ class ReflectionTableViewCell: UITableViewCell {
     func setUI(title:String,date:String){
         self.titleLabel.text = title
         self.dateLabel.text = date
+        playImage.image = #imageLiteral(resourceName: "Play Button")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

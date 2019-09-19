@@ -11,21 +11,47 @@ import LocalAuthentication
 
 class FaceRecognitionViewController: UIViewController {
     
+    var context = LAContext()
+    enum AuthenticationState {
+        case loggedin, loggedout
+    }
+    var state = AuthenticationState.loggedout 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        context = LAContext()
+        var error:NSError?
+        
+        // edit line - deviceOwnerAuthentication
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+            //showAlertViewIfNoBiometricSensorHasBeenDetected()
+            return
+        }
+        
+        let reason = "Log in to your account"
+        
+        // edit line - deviceOwnerAuthentication
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            
+            // edit line - deviceOwnerAuthentication
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason, reply: { (success, error) in
+                if success {
+                    DispatchQueue.main.async {
+                        print("Authentication was successful")
+                        self.state = .loggedin
+                        self.performSegue(withIdentifier: "faceID", sender: self)
+                    }
+                }else {
+                    DispatchQueue.main.async {
+                        //self.displayErrorMessage(error: error as! LAError )
+                        print("Authentication was error")
+                    }
+                }
+            })
+        }else {
+            // self.showAlertWith(title: "Error", message: (errorPointer?.localizedDescription)!)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

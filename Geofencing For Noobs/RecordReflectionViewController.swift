@@ -149,7 +149,7 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     func addPulse(){
         pulse=Pulsing(numberOfPulses: Float.infinity, radius: 200, position:micImage.center)
         pulse.animationDuration = 0.8
-        pulse.backgroundColor = UIColor.green.cgColor
+        pulse.backgroundColor = UIColor.blue.cgColor
         self.view.layer.insertSublayer(pulse, below: micImage.layer)
     }
 }
