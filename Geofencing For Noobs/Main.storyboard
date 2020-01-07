@@ -82,7 +82,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E6i-7B-zUT">
                             <color key="tintColor" red="0.20353835821151733" green="0.38220372796058655" blue="0.48628896474838257" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="kwc-Vy-u4z" kind="show" identifier="" id="arR-eL-th9"/>
+                                <segue destination="fQx-90-Hl6" kind="presentation" identifier="" id="arR-eL-th9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -208,20 +208,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey, Congrats on completing  today's Academy!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-Be-CEI">
-                                <rect key="frame" x="51" y="155" width="305" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What did you do today?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXu-fX-NLD">
-                                <rect key="frame" x="25" y="227" width="365" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cub-hx-eOu" customClass="RoundedButton" customModule="Geofencing_For_Noobs" customModuleProvider="target">
                                 <rect key="frame" x="16" y="750" width="374" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -233,40 +219,103 @@
                                     <action selector="recordButtonTapped:" destination="kwc-Vy-u4z" eventType="touchUpInside" id="e8O-b2-gP6"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Microphone" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-th-82x">
+                                <rect key="frame" x="91" y="349" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Record Your Reflection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-za-fzm">
-                                <rect key="frame" x="55" y="281" width="305" height="30"/>
+                                <rect key="frame" x="59" y="261" width="305" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prompt: Today, I did ___, I feel ___, I've learnt ___" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U90-iV-4uC">
-                                <rect key="frame" x="38" y="310" width="339" height="30"/>
+                                <rect key="frame" x="42" y="290" width="339" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Microphone" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-th-82x">
-                                <rect key="frame" x="87" y="378" width="240" height="240"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey, Congrats on completing  today's Academy!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-Be-CEI">
+                                <rect key="frame" x="59" y="161" width="305" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EN6-LD-xqT">
+                                <rect key="frame" x="353" y="103" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_close Copy"/>
+                                <connections>
+                                    <action selector="exitVC:" destination="kwc-Vy-u4z" eventType="touchUpInside" id="I3a-yb-iMf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sGg-8C-675"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Reflection" id="1eQ-3T-rRF"/>
                     <connections>
+                        <outlet property="exitButton" destination="EN6-LD-xqT" id="FU6-5g-hMa"/>
                         <outlet property="micImage" destination="ZfF-th-82x" id="AAU-JT-mhB"/>
                         <outlet property="recordButton" destination="cub-hx-eOu" id="BeF-Q2-PNF"/>
-                        <outlet property="titleTextField" destination="dXu-fX-NLD" id="9SE-Ma-8RD"/>
                         <segue destination="K0C-hs-juh" kind="unwind" identifier="toHome" unwindAction="unwindToHome:" id="YH6-5i-Atw"/>
+                        <segue destination="iW9-6L-Zzh" kind="show" identifier="addTitle" id="Mh8-tn-gUM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6A-fK-raD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="K0C-hs-juh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2912" y="67"/>
+            <point key="canvasLocation" x="3821.739130434783" y="66.964285714285708"/>
+        </scene>
+        <!--Add Title View Controller-->
+        <scene sceneID="ZjO-iG-1RK">
+            <objects>
+                <viewController id="iW9-6L-Zzh" customClass="AddTitleViewController" customModule="Geofencing_For_Noobs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jel-JG-LG2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I Did Some Awesome Coding!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NLG-lM-zdH">
+                                <rect key="frame" x="25" y="360" width="365" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Your Title!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ff-Ba-tJI">
+                                <rect key="frame" x="127" y="292" width="160" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3b-4M-aHv" customClass="RoundedButton" customModule="Geofencing_For_Noobs" customModuleProvider="target">
+                                <rect key="frame" x="25" y="752" width="369" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20353835819999999" green="0.38220372800000002" blue="0.48628896469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveTitle:" destination="iW9-6L-Zzh" eventType="touchUpInside" id="h4R-mV-Pib"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gbB-ns-xjQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="addTitleTextField" destination="NLG-lM-zdH" id="h5c-pR-fjW"/>
+                        <segue destination="NG7-AF-Mwe" kind="unwind" identifier="backToHome" unwindAction="unwindToHome:" id="iVB-tr-3Rh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iov-lY-yQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="NG7-AF-Mwe" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4618.840579710145" y="66.964285714285708"/>
         </scene>
         <!--Open Reflection View Controller-->
         <scene sceneID="Fqu-HG-uGm">
@@ -369,11 +418,30 @@
             </objects>
             <point key="canvasLocation" x="-2523" y="52"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DaY-kF-SeG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQx-90-Hl6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pEP-lc-Ul9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kwc-Vy-u4z" kind="relationship" relationship="rootViewController" id="SFe-dg-xZj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tM-wU-FSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2911.594202898551" y="66.964285714285708"/>
+        </scene>
     </scenes>
     <resources>
         <image name="JournalIcon" width="270" height="320"/>
         <image name="Microphone" width="287" height="287"/>
         <image name="Onboarding Page2" width="340" height="350"/>
         <image name="Play Button" width="56" height="56"/>
+        <image name="button_close Copy" width="28" height="28"/>
     </resources>
 </document>

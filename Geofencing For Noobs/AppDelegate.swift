@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userActivity.activityType)
         
         if userActivity.activityType == "jesse.AcademyJournal.Add a Journal"{
-            let startVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "reflectionList")
+            let startVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "faceID")
             //            let navVC = UINavigationController(rootViewController: startVC)
             let share = UIApplication.shared.delegate as? AppDelegate
             share?.window?.rootViewController = startVC

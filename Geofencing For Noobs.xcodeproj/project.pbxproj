@@ -15,6 +15,7 @@
 		700C0FCC2332075B00E07B34 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCB2332075B00E07B34 /* OnboardingViewController.swift */; };
 		700C0FCE2332518100E07B34 /* Pulsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCD2332518100E07B34 /* Pulsing.swift */; };
 		700C0FD02333105000E07B34 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FCF2333105000E07B34 /* RoundedButton.swift */; };
+		700C0FD3233389E200E07B34 /* AddTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C0FD2233389E200E07B34 /* AddTitleViewController.swift */; };
 		71BF6D2E2090A18500C70A39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF6D2D2090A18500C70A39 /* AppDelegate.swift */; };
 		71BF6D302090A18500C70A39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF6D2F2090A18500C70A39 /* ViewController.swift */; };
 		71BF6D352090A18700C70A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71BF6D342090A18700C70A39 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		700C0FCD2332518100E07B34 /* Pulsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pulsing.swift; sourceTree = "<group>"; };
 		700C0FCF2333105000E07B34 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		700C0FD1233330B900E07B34 /* Geofencing For Noobs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Geofencing For Noobs.entitlements"; sourceTree = "<group>"; };
+		700C0FD2233389E200E07B34 /* AddTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleViewController.swift; sourceTree = "<group>"; };
 		71BF6D2A2090A18500C70A39 /* Geofencing For Noobs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Geofencing For Noobs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BF6D2D2090A18500C70A39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71BF6D2F2090A18500C70A39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				700C0FCB2332075B00E07B34 /* OnboardingViewController.swift */,
 				700C0FCD2332518100E07B34 /* Pulsing.swift */,
 				700C0FCF2333105000E07B34 /* RoundedButton.swift */,
+				700C0FD2233389E200E07B34 /* AddTitleViewController.swift */,
 			);
 			path = "Geofencing For Noobs";
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				700C0FD02333105000E07B34 /* RoundedButton.swift in Sources */,
 				71BF6D302090A18500C70A39 /* ViewController.swift in Sources */,
 				700C0FCC2332075B00E07B34 /* OnboardingViewController.swift in Sources */,
+				700C0FD3233389E200E07B34 /* AddTitleViewController.swift in Sources */,
 				71BF6D2E2090A18500C70A39 /* AppDelegate.swift in Sources */,
 				700C0FC02330B92200E07B34 /* FaceRecognitionViewController.swift in Sources */,
 			);

@@ -36,6 +36,17 @@ class ViewController: UIViewController {
     var state = AuthenticationState.loggedout 
     //    var currentLocationManager = CLLocationManager()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        let defaults = UserDefaults.standard
+        listOfRecording = defaults.object(forKey:"nameArray") as? [String] ?? [String]()
+        recordingDates  = defaults.object(forKey: "dateArray") as? [String] ?? [String]()
+        listOfRecording.reverse()
+        recordingDates.reverse()
+
+        reflectionTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,7 +145,10 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        listOfRecording.reverse()
+//        recordingDates.reverse()
         let row = listOfRecording[indexPath.row]
+        print(recordingDates)
         let date = recordingDates[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "reflectionCell") as? ReflectionTableViewCell
         cell?.setUI(title: row,date: date)
@@ -165,7 +179,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
             previousSelectedIndex = indexPath
         }
         
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(recordNumber).m4a")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(listOfRecording.count-recordNumber+1).m4a")
         do {
             try audioPlayer = AVAudioPlayer(contentsOf: audioFilename)
             audioPlayer.play()

@@ -17,8 +17,8 @@ class FaceRecognitionViewController: UIViewController {
     }
     var state = AuthenticationState.loggedout 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         context = LAContext()
         var error:NSError?

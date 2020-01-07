@@ -12,8 +12,9 @@ import AVFoundation
 class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var titleTextField: UITextField!
+//    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var micImage: UIImageView!
+    @IBOutlet weak var exitButton: UIButton!
     
     var recordingSession:AVAudioSession!
     var audioRecorder:AVAudioRecorder!
@@ -54,6 +55,7 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         if audioRecorder == nil{
             addPulse()
+            exitButton.isEnabled = false
             numberOfRecords += 1
             print(numberOfRecords)
             let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
@@ -71,6 +73,7 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
         }else{
             pulse.removeFromSuperlayer()
             audioRecorder.stop()
+            exitButton.isEnabled = true
             audioRecorder = nil
              recordButton.setTitle("Start Recording", for: .normal)
             
@@ -78,10 +81,8 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
             saveRecording()
             print("record saved")
             
-            displayCompletionAlert()
-            
-            
-            
+            performSegue(withIdentifier: "addTitle", sender: self)
+//            displayCompletionAlert()
 //            performSegue(withIdentifier: "toHome", sender: self)
         }
     }
@@ -98,14 +99,14 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func displayCompletionAlert(){
-        let alert = UIAlertController(title: "Recording Successful", message: "Your Reflection Has Been Saved, Yay!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Go to Home", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-             self.performSegue(withIdentifier: "toHome", sender: self)
-        }))
-        present(alert, animated: true, completion: nil)
-    }
+//    func displayCompletionAlert(){
+//        let alert = UIAlertController(title: "Recording Successful", message: "Your Reflection Has Been Saved, Yay!", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Go to Home", style: .default, handler: { (action) in
+//            alert.dismiss(animated: true, completion: nil)
+//             self.performSegue(withIdentifier: "toHome", sender: self)
+//        }))
+//        present(alert, animated: true, completion: nil)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -113,10 +114,11 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
         
         // Function to append to AllRecordViewController
         
-        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
+//        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
         
-        segueToAllRecord?.addRecord(name: recordingName)
+//        segueToAllRecord?.addRecord(name: recordingName)
         segueToAllRecord?.addRecordDates(date: getDate())
+        print(segueToAllRecord?.recordingDates)
         segueToAllRecord?.reflectionTableView.reloadData()
         
         print("=====================================")
@@ -125,16 +127,16 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
     
     func saveRecording() {
         let defaults = UserDefaults.standard
-        var nameRecordingArray = defaults.object(forKey:"nameArray") as? [String] ?? [String]()
+//        var nameRecordingArray = defaults.object(forKey:"nameArray") as? [String] ?? [String]()
         var dateRecordingArray = defaults.object(forKey:"dateArray") as? [String] ?? [String]()
-        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
+//        let recordingName = titleTextField.text ?? "Recording \(numberOfRecords)"
         
-        print(recordingName)
+//        print(recordingName)
         
         let formattedDate = getDate()
         dateRecordingArray.append(formattedDate)
-        nameRecordingArray.append(recordingName)
-        defaults.set(nameRecordingArray, forKey: "nameArray")
+//       nameRecordingArray.append(recordingName)
+//        defaults.set(nameRecordingArray, forKey: "nameArray")
         defaults.set(dateRecordingArray, forKey: "dateArray")
     }
     
@@ -152,6 +154,9 @@ class RecordReflectionViewController: UIViewController,AVAudioRecorderDelegate {
         pulse.backgroundColor = UIColor.blue.cgColor
         self.view.layer.insertSublayer(pulse, below: micImage.layer)
     }
+    @IBAction func exitVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension UIViewController{
@@ -166,6 +171,13 @@ extension UIViewController{
         view.endEditing(true)
     }
     
+}
+
+extension UIViewController:UITextFieldDelegate{
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
     
 //    @IBAction func playbackRecording(_ sender: Any) {
